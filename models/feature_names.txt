@@ -1,0 +1,13 @@
+Age
+Income
+Time_on_Site
+Previous_Clicks
+Device_Type_Num
+Is_Tech_Ad
+Is_Male
+Is_Evening
+Engagement_Score
+Is_Active_User
+Is_High_Income
+Time_Clicks_Interaction
+Age_Income_Ratio
