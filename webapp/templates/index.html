@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTR Prediction - Ad Click Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <h1>🎯 Click-Through Rate Predictor</h1>
+                <p class="subtitle">Predict whether a user will click on your ad</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2>📊 User Profile</h2>
+                    <p>Enter user and ad information to predict click probability</p>
+                </div>
+
+                <form id="prediction-form">
+                    <div class="form-grid">
+                        <!-- Demographic Information -->
+                        <div class="form-section">
+                            <h3>👤 Demographics</h3>
+
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" name="age" value="35" min="18" max="80" required>
+                                <small>18-80 years</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="income">Annual Income ($)</label>
+                                <input type="number" id="income" name="income" value="70000" min="20000" max="200000"
+                                    step="1000" required>
+                                <small>$20,000 - $200,000</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="1">Male</option>
+                                    <option value="0">Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Behavioral Information -->
+                        <div class="form-section">
+                            <h3>📱 Behavior</h3>
+
+                            <div class="form-group">
+                                <label for="time_on_site">Time on Site (minutes)</label>
+                                <input type="number" id="time_on_site" name="time_on_site" value="12.5" min="0" max="60"
+                                    step="0.5" required>
+                                <small>0-60 minutes</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="previous_clicks">Previous Clicks</label>
+                                <input type="number" id="previous_clicks" name="previous_clicks" value="25" min="0"
+                                    max="100" required>
+                                <small>0-100 clicks</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="device_type">Device Type</label>
+                                <select id="device_type" name="device_type" required>
+                                    <option value="1">Mobile</option>
+                                    <option value="0">Desktop</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Ad Information -->
+                        <div class="form-section">
+                            <h3>📢 Ad Information</h3>
+
+                            <div class="form-group">
+                                <label for="ad_category">Ad Category</label>
+                                <select id="ad_category" name="ad_category" required>
+                                    <option value="1">Technology</option>
+                                    <option value="0">Lifestyle</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="time_of_day">Time of Day</label>
+                                <select id="time_of_day" name="time_of_day" required>
+                                    <option value="1">Evening</option>
+                                    <option value="0">Morning</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            🚀 Predict Click Probability
+                        </button>
+                        <button type="reset" class="btn-secondary">
+                            🔄 Reset
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Results -->
+            <div id="results" class="card hidden">
+                <div class="card-header">
+                    <h2>📈 Prediction Results</h2>
+                </div>
+
+                <div id="result-content">
+                    <div class="prediction-result">
+                        <div id="prediction-icon" class="prediction-icon"></div>
+                        <div id="prediction-text" class="prediction-text"></div>
+                        <div id="probability-meter" class="probability-meter">
+                            <div class="meter-bar">
+                                <div id="probability-fill" class="meter-fill"></div>
+                            </div>
+                            <div id="probability-label" class="probability-label"></div>
+                        </div>
+                    </div>
+
+                    <div class="explanation-box">
+                        <h3>📝 Explanation</h3>
+                        <ul id="explanation-list" class="explanation-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <p>Built with ❤️ by <strong>Praveen Kumar</strong></p>
+                <div class="social-links">
+                    <a href="https://github.com/InfinitePraveen" target="_blank" class="social-link">🐙 GitHub</a>
+                    <a href="https://www.linkedin.com/in/infinitepraveen/" target="_blank" class="social-link">🔗
+                        LinkedIn</a>
+                </div>
+                <p class="footer-note">This project uses LightGBM for CTR prediction</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
